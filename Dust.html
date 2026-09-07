@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0037)http://localhost:8080/Tools/Dust.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Particle Text Designer</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -159,34 +159,34 @@ main { background: #f5f5f5 \!important; }
       <div class="section">
         <div class="section-title">Typography</div>
         <div class="field"><label>Font</label>
-          <select id="font"><option value="Impact" selected="">Impact</option><option value="Arial Black">Arial Black</option><option value="Georgia">Georgia</option><option value="Trebuchet MS">Trebuchet MS</option><option value="Courier New">Courier New</option><option value="Palatino">Palatino</option></select>
+          <select id="font"><option value="Impact" selected>Impact</option><option value="Arial Black">Arial Black</option><option value="Georgia">Georgia</option><option value="Trebuchet MS">Trebuchet MS</option><option value="Courier New">Courier New</option><option value="Palatino">Palatino</option></select>
         </div>
-        <div class="field"><input type="file" id="font-upload" accept=".ttf,.otf,.woff,.woff2"><div id="font-upload-btn" onclick="document.getElementById(&#39;font-upload&#39;).click()">↑ Upload custom font</div></div>
-        <div class="field"><div class="field-row"><label>Font size</label><span class="field-val" id="fsizev">50</span></div><input type="range" id="fontsize" min="10" max="100" step="1" value="50"></div>
-        <div class="field"><div class="field-row"><label>Leading</label><span class="field-val" id="lv">1.1</span></div><input type="range" id="leading" min="0.6" max="2.5" step="0.05" value="1.1"></div>
-        <div class="field"><div class="field-row"><label>Tracking</label><span class="field-val" id="tv">0</span></div><input type="range" id="tracking" min="-10" max="40" step="1" value="0"></div>
+        <div class="field"><input type="file" id="font-upload" accept=".ttf,.otf,.woff,.woff2"/><div id="font-upload-btn" onclick="document.getElementById('font-upload').click()">↑ Upload custom font</div></div>
+        <div class="field"><div class="field-row"><label>Font size</label><span class="field-val" id="fsizev">50</span></div><input type="range" id="fontsize" min="10" max="100" step="1" value="50"/></div>
+        <div class="field"><div class="field-row"><label>Leading</label><span class="field-val" id="lv">1.1</span></div><input type="range" id="leading" min="0.6" max="2.5" step="0.05" value="1.1"/></div>
+        <div class="field"><div class="field-row"><label>Tracking</label><span class="field-val" id="tv">0</span></div><input type="range" id="tracking" min="-10" max="40" step="1" value="0"/></div>
       </div>
       <div class="separator"></div>
       <div class="section">
         <div class="section-title">Color</div>
-        <div class="field"><label>Particle color</label><div class="color-row"><input type="color" id="pcol" value="#000000"><input type="text" class="color-hex" id="pcol-hex" value="#000000" maxlength="7"></div></div>
-        <div class="field"><label>Background</label><div class="color-row"><input type="color" id="bgcol" value="#f6fdbf"><input type="text" class="color-hex" id="bgcol-hex" value="#f6fdbf" maxlength="7"></div></div>
+        <div class="field"><label>Particle color</label><div class="color-row"><input type="color" id="pcol" value="#ffffff"/><input type="text" class="color-hex" id="pcol-hex" value="#ffffff" maxlength="7"/></div></div>
+        <div class="field"><label>Background</label><div class="color-row"><input type="color" id="bgcol" value="#000000"/><input type="text" class="color-hex" id="bgcol-hex" value="#000000" maxlength="7"/></div></div>
       </div>
       <div class="separator"></div>
       <div class="section">
         <div class="section-title">Particles</div>
-        <div class="field"><div class="field-row"><label>Size</label><span class="field-val" id="psv">0.6</span></div><input type="range" id="psize" min="0.3" max="3" step="0.1" value="0.6"></div>
-        <div class="field"><div class="field-row"><label>Density</label><span class="field-val" id="dv">2</span></div><input type="range" id="density" min="1" max="6" step="0.5" value="2"></div>
+        <div class="field"><div class="field-row"><label>Size</label><span class="field-val" id="psv">0.6</span></div><input type="range" id="psize" min="0.3" max="3" step="0.1" value="0.6"/></div>
+        <div class="field"><div class="field-row"><label>Density</label><span class="field-val" id="dv">2</span></div><input type="range" id="density" min="1" max="6" step="0.5" value="2"/></div>
       </div>
       <div class="separator"></div>
       <div class="section">
         <div class="section-title">Interaction</div>
-        <div class="field"><div class="field-row"><label>Flow strength</label><span class="field-val" id="flv">1.0</span></div><input type="range" id="flowstr" min="0.2" max="3" step="0.1" value="1.0"></div>
-        <div class="field"><div class="field-row"><label>Radius</label><span class="field-val" id="rv">100</span></div><input type="range" id="radius" min="30" max="200" step="5" value="200"></div>
+        <div class="field"><div class="field-row"><label>Flow strength</label><span class="field-val" id="flv">1.0</span></div><input type="range" id="flowstr" min="0.2" max="3" step="0.1" value="1.0"/></div>
+        <div class="field"><div class="field-row"><label>Radius</label><span class="field-val" id="rv">100</span></div><input type="range" id="radius" min="30" max="200" step="5" value="100"/></div>
       </div>
     </div>
   </div>
-  <div id="canvas-area"><canvas id="c" width="0" height="0"></canvas></div>
+  <div id="canvas-area"><canvas id="c"></canvas></div>
 </div>
 <script>
 const canvas=document.getElementById('c');
@@ -195,7 +195,7 @@ const area=document.getElementById('canvas-area');
 let W,H,dpr,particles=[],animId,noiseT=0;
 let mouseX=-9999,mouseY=-9999;
 let customFontName=null;
-let cfg={text:'Hello',font:'Impact',align:'center',pcolor:'#000000',bgcolor:'#f6fdbf',psize:0.6,density:2,flowStr:1.0,radius:200,fontSize:50,leading:1.1,tracking:0};
+let cfg={text:'Hello',font:'Impact',align:'center',pcolor:'#ffffff',bgcolor:'#000000',psize:0.6,density:2,flowStr:1.0,radius:100,fontSize:50,leading:1.1,tracking:0};
 const MARGIN=60;
 
 function fade(t){return t*t*t*(t*(t*6-15)+10);}
@@ -354,6 +354,5 @@ document.getElementById('radius').addEventListener('input',e=>{cfg.radius=parseI
 window.addEventListener('resize',()=>{clearTimeout(window._rt);window._rt=setTimeout(resize,150);});
 resize();
 </script>
-
-
-</body></html>
+</body>
+</html>

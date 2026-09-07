@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)http://localhost:8080/Tools/WaterBox.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Typography Water Box</title>
-<link href="./css2" rel="stylesheet">
-<script src="./matter.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <style>
   @font-face {
     font-family: 'BogartExtraLight';
@@ -49,6 +49,7 @@ input[type=color]{width:28px;height:28px;border-radius:4px;border:1px solid #333
 canvas{cursor:grab;touch-action:none;display:block}
 canvas:active{cursor:grabbing}
 #hint{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-size:11px;color:#444;pointer-events:none;white-space:nowrap}
+@media(max-width:768px){body{flex-direction:column!important;}#sidebar{width:100%!important;min-width:unset!important;height:auto!important;max-height:45vh!important;border-right:none!important;border-bottom:1px solid #2e2e2e!important;overflow-y:auto!important;}html,body{overflow:auto!important;}#main{flex:1;min-height:0;}}
 </style>
 
 <style id="vh-theme">
@@ -156,11 +157,10 @@ main { background: #f5f5f5 \!important; }
 
   <div class="section">
     <div class="section-title">Text</div>
-    <textarea id="T">The first man discovered how to make fire. He was probably burnt at the stake he’d taught his brothers to light, but he left them a gift they had not conceived.</textarea>
+    <textarea id="T">Thousands of years ago, the first man discovered how to make fire.</textarea>
     <label>Font</label>
     <select id="F">
-      <option value="NeueHaas" selected>NeueHaas Roman</option>
-      <option value="BogartExtraLight">Bogartextralight</option>
+      <option value="BogartExtraLight">Bogartextralight (default)</option>
       <option value="Inter">Inter</option>
       <option value="serif">Serif</option>
       <option value="monospace">Monospace</option>
@@ -169,7 +169,7 @@ main { background: #f5f5f5 \!important; }
     </select>
     <label>Upload font (.ttf / .otf / .woff)</label>
     <input type="file" id="font-file" accept=".ttf,.otf,.woff,.woff2">
-    <button class="upload-btn" id="font-upload-btn" onclick="document.getElementById(&#39;font-file&#39;).click()">Choose font file…</button>
+    <button class="upload-btn" id="font-upload-btn" onclick="document.getElementById('font-file').click()">Choose font file…</button>
     <label>Font size</label>
     <div class="row">
       <input type="range" id="FS" min="8" max="48" value="30">
@@ -187,13 +187,13 @@ main { background: #f5f5f5 \!important; }
     <label>Shape</label>
     <div class="shape-grid">
       <div class="shape-btn active" data-shape="square" title="Square">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"></rect></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
       </div>
       <div class="shape-btn" data-shape="circle" title="Circle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"></circle></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/></svg>
       </div>
       <div class="shape-btn" data-shape="triangle" title="Triangle">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,3 22,21 2,21"></polygon></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12,3 22,21 2,21"/></svg>
       </div>
     </div>
     <label>Box size</label>
@@ -210,7 +210,7 @@ main { background: #f5f5f5 \!important; }
 
   <div class="section">
     <div class="section-title">Colors</div>
-    <div class="color-row"><span class="color-label">Background</span><input type="color" id="BG" value="#0091ff"></div>
+    <div class="color-row"><span class="color-label">Background</span><input type="color" id="BG" value="#f90b0b"></div>
     <div class="color-row"><span class="color-label">Box fill</span><input type="color" id="FC" value="#000000"></div>
     <div class="color-row"><span class="color-label">Box stroke</span><input type="color" id="SC" value="#ffffff"></div>
     <div class="color-row"><span class="color-label">Text</span><input type="color" id="CC" value="#ffffff"></div>
@@ -226,19 +226,13 @@ main { background: #f5f5f5 \!important; }
   </div>
 
   <div class="section">
-    <div class="section-title">Export</div>
-    <button id="btn-png" style="width:100%;margin-bottom:6px;">Save PNG</button>
-    <button id="btn-rec" style="width:100%;">● Record MP4</button>
-  </div>
-
-    <div class="section">
     <button id="btn-reset">↺ Reset to default</button>
   </div>
 </div>
 
 <div id="main">
-  <canvas id="C" width="300" height="150"></canvas>
-  <div id="hint"></div>
+  <canvas id="C"></canvas>
+  <div id="hint">drag to rotate the container</div>
 </div>
 
 <script>
@@ -254,9 +248,9 @@ main { background: #f5f5f5 \!important; }
   const MAX_ANG_VEL=0.16;
 
   const DEFAULTS={
-    text:'The first man discovered how to make fire. He was probably burnt at the stake he’d taught his brothers to light, but he left them a gift they had not conceived.',
-    font:'NeueHaas',size:30,cc:'#ffffff',fc:'#000000',sc:'#ffffff',
-    bg:'#0091ff',sw:0,boxSize:380,grav:1
+    text:'Thousands of years ago, the first man discovered how to make fire.',
+    font:'BogartExtraLight',size:30,cc:'#ffffff',fc:'#000000',sc:'#ffffff',
+    bg:'#f90b0b',sw:0,boxSize:380,grav:1
   };
 
   function cfg(){
@@ -619,42 +613,15 @@ main { background: #f5f5f5 \!important; }
     };
     reader.readAsArrayBuffer(file);
   });
-
-  // ── EXPORT ──────────────────────────────────────────────────────
-  document.getElementById('btn-png').addEventListener('click',function(){
-    const a=document.createElement('a');
-    a.download='waterbox.png';
-    a.href=cv.toDataURL('image/png');
-    a.click();
-  });
-  let _rec=null,_recChunks=[];
-  document.getElementById('btn-rec').addEventListener('click',function(){
-    if(_rec&&_rec.state==='recording'){_rec.stop();this.textContent='● Record MP4';return;}
-    const stream=cv.captureStream(30);
-    _recChunks=[];
-    const mime=MediaRecorder.isTypeSupported('video/mp4')?'video/mp4':'video/webm';
-    _rec=new MediaRecorder(stream,{mimeType:mime});
-    _rec.ondataavailable=e=>_recChunks.push(e.data);
-    _rec.onstop=()=>{
-      const blob=new Blob(_recChunks,{type:mime});
-      const url=URL.createObjectURL(blob);
-      const a=document.createElement('a');
-      a.download='waterbox.'+(mime.includes('mp4')?'mp4':'webm');
-      a.href=url;a.click();URL.revokeObjectURL(url);
-    };
-    _rec.start();this.textContent='■ Stop Recording';
-  });
-
   document.getElementById('btn-reset').addEventListener('click',resetAll);
 
   window.addEventListener('resize',resizeCanvas);
   resizeCanvas();
   // set default font select
-  document.getElementById('F').value='NeueHaas';
+  document.getElementById('F').value='BogartExtraLight';
     document.fonts.ready.then(()=>{initEngine();rebuild();requestAnimationFrame(loop);});
   setTimeout(()=>{if(!built){initEngine();rebuild();requestAnimationFrame(loop);}},1200);
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)http://localhost:8080/Tools/Images%20To%20Text.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image To Text</title>
-<link href="./css2(1)" rel="stylesheet">
+<title>Typography Grid Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -288,7 +288,7 @@
 
   #canvas-wrap {
     position: relative;
-    
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 8px 40px rgba(0,0,0,0.6);
     border-radius: 2px;
     overflow: hidden;
     cursor: crosshair;
@@ -325,6 +325,7 @@
     letter-spacing: 0.08em;
     color: rgba(255,255,255,0.2);
   }
+@media(max-width:768px){.layout{flex-direction:column!important;}aside{width:100%!important;min-width:unset!important;height:auto!important;max-height:45vh!important;border-right:none!important;border-bottom:1px solid var(--border)!important;overflow-y:auto!important;}html,body{overflow:auto!important;height:auto!important;}}
 </style>
 
 <style id="vh-theme">
@@ -419,16 +420,16 @@ main { background: #f5f5f5 \!important; }
 #img-list > div { background: #f5f5f5 \!important; border: 1px solid #e0e0e0 \!important; border-radius: 0 \!important; color: #666666 \!important; font-size: 11px \!important; }
 /* Images To Text: override CSS vars */
 :root {
-  --bg: #0e0e0e; --surface: #161616; --surface2: #222222;
-  --border: rgba(255,255,255,0.08); --border-hover: rgba(255,255,255,0.3);
-  --text: #e8e8e8; --text-muted: #888888;
+  --bg: #ffffff; --surface: #f8f8f8; --surface2: #f0f0f0;
+  --border: rgba(0,0,0,0.1); --border-hover: rgba(0,0,0,0.3);
+  --text: #111111; --text-muted: #888888;
 }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Image To Text</h1>
+  <h1>Typography Grid</h1>
   <span>click &amp; drag to paint</span>
 </header>
 
@@ -439,10 +440,10 @@ main { background: #f5f5f5 \!important; }
     <div>
       <p class="section-label">Tile images</p>
       <label class="upload-zone">
-        <input type="file" id="file-input" accept="image/*" multiple="">
+        <input type="file" id="file-input" accept="image/*" multiple>
         <span class="icon">↑</span>
         <p>Upload images</p>
-        <p style="font-size:10px;margin-top:4px;font-family:&#39;IBM Plex Mono&#39;,monospace;">multiple supported</p>
+        <p style="font-size:10px;margin-top:4px;font-family:'IBM Plex Mono',monospace;">multiple supported</p>
       </label>
       <div id="img-list"></div>
     </div>
@@ -464,8 +465,8 @@ main { background: #f5f5f5 \!important; }
         </div>
         <input type="range" id="gap-slider" min="-100" max="100" value="0" step="1">
         <div style="display:flex;justify-content:space-between;margin-top:3px;">
-          <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:10px;color:var(--text-muted);">overlap</span>
-          <span style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:10px;color:var(--text-muted);">spread</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted);">overlap</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text-muted);">spread</span>
         </div>
       </div>
     </div>
@@ -478,7 +479,7 @@ main { background: #f5f5f5 \!important; }
           <label>Weight</label>
           <span class="val" id="stroke-val">0.5</span>
         </div>
-        <input type="range" id="stroke-slider" min="0" max="3" value="0" step="0.1">
+        <input type="range" id="stroke-slider" min="0" max="3" value="0.5" step="0.1">
       </div>
     </div>
 
@@ -527,7 +528,7 @@ main { background: #f5f5f5 \!important; }
 
   <main>
     <div id="canvas-wrap">
-      <canvas id="c" width="100" height="100"></canvas>
+      <canvas id="c"></canvas>
       <div id="upload-prompt">
         <div id="upload-prompt-inner">
           <span>↑</span>
@@ -570,7 +571,7 @@ let eraseMode = false;
 let canvasW = 0, canvasH = 0;
 let bgColor = '#f2f3eb';
 let strokeColor = '#1e1e1e';
-let strokeWeight = 0;
+let strokeWeight = 0.5;
 let gap = 0;
 
 function pickRandom() {
@@ -805,6 +806,5 @@ window.addEventListener('resize', () => { initGrid(); render(); });
 initGrid();
 render();
 </script>
-
-
-</body></html>
+</body>
+</html>
