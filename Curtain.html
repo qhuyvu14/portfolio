@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curtain Typography</title>
+<style>
+@font-face{
+  font-family:'ManukaBold';
+  src:url('data:font/otf;base64,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YWtlb3RmZXhlIDIuNS42NTYwMVRlc3RNYW51a2EtQm9sZE1hbnVrYSBpcyBlaXRoZXIgYSByZWdpc3RlcmVkIHRyYWRlbWFyayBvciBhIHRyYWRlbWFyayBvZiB0aGUgS2xpbSBUeXBlIEZvdW5kcnkgaW4gTmV3IFplYWxhbmQgYW5kL29yIG90aGVyIGNvdW50cmllcy5LbGltIFR5cGUgRm91bmRyeUtyaXMgU293ZXJzYnlodHRwczovL2tsaW0uY28ubnovaHR0cHM6Ly9rbGltLmNvLm56L2xpY2VuY2VzL3Rlc3QtZm9udHMvAEMAbwBwAHkAcgBpAGcAaAB0ACAAMgAwADIAMQAsACAASwByAGkAcwAgAFMAbwB3AGUAcgBzAGIAeQAsACAASwBsAGkAbQAgAFQAeQBwAGUAIABGAG8AdQBuAGQAcgB5AC4AVABlAHMAdAAgAE0AYQBuAHUAawBhAEIAbwBsAGQAMQAuADAAMAA1ADsASwBMAEkATQA7AE0AYQBuAHUAawBhAC0AQgBvAGwAZAA7AFQAZQBzAHQAVABlAHMAdAAgAE0AYQBuAHUAawBhACAAQgBvAGwAZABWAGUAcgBzAGkAbwBuACAAMQAuADAAMAA1ADsAaABvAHQAYwBvAG4AdgAgADEALgAwAC4AMQAxADYAOwBtAGEAawBlAG8AdABmAGUAeABlACAAMgAuADUALgA2ADUANgAwADEAVABlAHMAdABNAGEAbgB1AGsAYQAtAEIAbwBsAGQATQBhAG4AdQBrAGEAIABpAHMAIABlAGkAdABoAGUAcgAgAGEAIAByAGUAZwBpAHMAdABlAHIAZQBkACAAdAByAGEAZABlAG0AYQByAGsAIABvAHIAIABhACAAdAByAGEAZABlAG0AYQByAGsAIABvAGYAIAB0AGgAZQAgAEsAbABpAG0AIABUAHkAcABlACAARgBvAHUAbgBkAHIAeQAgAGkAbgAgAE4AZQB3ACAAWgBlAGEAbABhAG4AZAAgAGEAbgBkAC8AbwByACAAbwB0AGgAZQByACAAYwBvAHUAbgB0AHIAaQBlAHMALgBLAGwAaQBtACAAVAB5AHAAZQAgAEYAbwB1AG4AZAByAHkASwByAGkAcwAgAFMAbwB3AGUAcgBzAGIAeQBoAHQAdABwAHMAOgAvAC8AawBsAGkAbQAuAGMAbwAuAG4AegAvAGgAdAB0AHAAcwA6AC8ALwBrAGwAaQBtAC4AYwBvAC4AbgB6AC8AbABpAGMAZQBuAGMAZQBzAC8AdABlAHMAdAAtAGYAbwBuAHQAcwAvAAAAAgAAAAMAAAAUAAMAAQAAABQABABSAAAADgAIAAIABgAgAC4AOQBaAHoBAf//AAAAIAAsADAAQQBhAQD////hAAAAC//B/7wAAAABAAAADAAAAAAAAAAKAAAAOQA6ADgAHAA3AAAAAwAAAAAAAP+SACwAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAACgAwAEQAAkRGTFQADmxhdG4AGgAEAAAAAP//AAEAAAAEAAAAAP//AAEAAQACa2VybgAOa2VybgAOAAAAAQAAAAEABAACAAAAAgAKAYYAAQA0AAQAAAAVAGIAdACCAJQAogCoALoAxADKANAA1gDcAOIBBAEWARwBLgE8AU4BcAF2AAEAFQADAAUABwARABUAFwAZACMAMgA0ADkAOwA8AD0APgA/AEAAQQBCAEMARAAEABf/+QAZ//MAMv/7ADT/9QADABX/7AAZ//MAGv/tAAQAGf/1ACz/9AAy/+wANP/gAAMAF//5ABn/7QA0//QAAQA3/8QABAAZ//4ALP/zADL/+AA0/+wAAgAX//4AMv/tAAEAOQAAAAEANP/+AAEAMv/+AAEAJgAWAAEAQv/zAAgAPP/2AD3/+wA+//YAP//2AED/+wBC//YAQ//7AET/+wAEAD7//AA//+EAQP/8AEL/9AABAEL/8gAEADz/5wA9/+4AQv/fAET//wADADz/+wA9//wAQv/3AAQAPf//AD7//ABC//IARP//AAgAO//3AD3/+wA+//UAP//GAED/8ABB//YAQ//3AET/+AABAEL/9wABAEL/9AACEjQABAAAEj4SygA2ACsAAP/5//L/+v/u//v/9v/7//v/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+YAAAAAAAAAAP/K//L/7P/u/9b/+v/6//P/9P/+//T/+f/0//T/+f/5//QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/5f/2////8v/2/6kAAAAA//v/zAAAAAD/9QAA//IAAAAAAAD/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/jAAAAAAAAAAD/1P/4//j/8//Z//j/+//q//L/5v/8//D/8//q//D//P/zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+f/+//4AAAAA//L/7AAA//L/7v/2//n/+f/g//P/+QAA//P/+P/z//n/+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/78AAAAAAAAAAAAAAAAAAAAA/8wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/9gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/zQAAAAAAAAAAAAAAAP/y//n/7AAA//gAAP/4//0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//7//gAAAAAAAAAA//n/9P/Z//7/9AAA/+3/8v/+//oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9n/6v/bAAAAAP/y/+YAAP/4//j/+f//////8v/5//8AAP/5//7/8v////gAAAAAAAAAAP/j/+YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//j/9f/5//L/+v/2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//gAAP/z//kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAr/9P/zAAD/9f/6AAAAAP/7//4AAAAAAAD/+wAA//sAAAAAAAAAAAAAAAAAAP/zAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//D/+f/yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//T/7gAAAAr/8//uAAD/9P/z//j/+v/6/+j//v//AAD/9P/5//n/+v/2AAAAAAAAAAD/8//uAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/83/3//KAAAACv/n/88AAP/1//X/9QAA//v/2v/zAAAAAP/2//v/7v/7//UAAAAAAAAAAP/W/9QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//j/8P/5/+7/+P/2AAAAAP/7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//gAAP/u//QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/x//r/7wAAAAUAAAAAAAD/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/5//X//v/y//8AAAAAAAD/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/5AAD/9v/0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9kAAAAAAAAAAP/J/9n/0//Z/8n/8P/1/83/4P/e/+n/2P/g/9n/0//p/9sAAAAAAAAAAAAAAAD/0//5/9P/4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8gAAAAAAAP/+//YAAAAAAAAAAAAAAAD/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//n/9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/qAAAAAAAAAAD/4//5//n/9P/n//n//v/y//j/8v/+//b/+f/y//L//v/5AAAAAAAAAAAAAAAA//n//v/y//kAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/9sAAAAAAAAAAP/F//L/8v/s/8X/7v/1/9j/3//W//D/4//n/9z/4//w/+cAAAAAAAAAAAAAAAD/8v/+/+b/5wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAX/9f/1AAD/+//4//8AAP/7/9v/+wAAAAD/9v/7//r/+//+AAAAAAAAAAAAAP/1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/5//gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7//r/+f/7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+QAA//QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//v/+v/4//YAAAAAAAAAAAAA//v//wAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP/5AAD/8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/y/97/8v/W/+kAAP/y/+f/4QAAAAAAAP/7AAAAAP/2AAAAAAAAAAD//AAAAAAAAAAAAAAAAP/m/+z/4P/ZAAAAAP/T//v/2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7//n/+P/2AAAAAAAAAAAAAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD/+AAA/+0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/+kAAAAA//sAAAAAAAD/9f/7//IAAP/7AAD/9f/7AAAAAAAAAAAAAAAAAAAAAAAAAAD/9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAQAAAAAAAAAAP//AAD/9gAFAAAAAAAAAAAABQAAAAAACgAAAAAAAAAAAAQAAP/6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/0//QAAAAAAAAAAP/2//X/3gAA//oAAP/x//QAAP/7AAAAAAAAAAAAAAAA//QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+v/5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+//5//j/9gAAAAAAAAAAAAAAAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//gAAP/tAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/yf/j/8UABQAA/9//zQAA//b/9gAAAAD/+wAA//MAAAAA//sAAP/u//v/9gAAAAAAAAAA/9T/zQAAAAAAAP/i/9b/4gAA//b/9v/1//b/9v/2AAAAAAAAAAAAAAAA/6/////+//sAAAAAAAD//wAAAAAABQAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAP/+AAD/8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/+//3/+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//0AAP/yAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/zAAAAAAAA//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/3wAAAAAAAAAAAAAAAP/4//r/8gAA//8AAP/5//4AAAAAAAAAAAAAAAAAAAAAAAAAAP/+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/NAAAAAAAAAAAAAAAA//L/+f/nAAD/+QAA//j//AAAAAAAAAAAAAAAAAAAAAAAAAAA//4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/+//7/+IAAAAAAAD/9v/7AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgABAAIARAAAAAEAAgBDABIAAAATABkAFAABABUAFgAWAB0AFwAYABYAFgAZAAIAGQAaABsAHAAdAAMAHgAEAB8AIAASACEAIgAjACsAJQAmACcALAAoACkAKgArACwALAAtACIACgAvADAAMQAyAA8AMwAQADQANQAhAC4ALgAkABEACQAOAA0ABwAGAAwACwAFAAgAAQACAEMAAQAZAAsAGQAZABkACwAZABkACgAZABkAGQAZAAsAGQALABkADAACABcAHAADAB4ABAAFAAEADQAbABMADgATABAAEQAbABoAGAAbABsAEgASABMAIAAOABIAFAAVABYAHQAHAB8ACAAJAA0ABgAGAA8AKgAjACQAKAAhACYAKQAiACUAJwABAAAACgAmACgAAkRGTFQADmxhdG4AGAAEAAAAAP//AAAAAAAAAAAAAAAAAAAAAQAAAAE=') format('opentype');
+  font-weight:bold;font-style:normal;
+}
+@font-face {
+  font-family: 'NeueHaas';
+  src: url('../NeueHaasDisplay-Roman.ttf') format('truetype');
+  font-weight: normal; font-style: normal;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#111;font-family:system-ui,sans-serif}
+#app{display:flex;flex-direction:row;height:100vh;min-height:520px}
+#sidebar{
+  width:210px;min-width:210px;
+  display:flex;flex-direction:column;gap:0;
+  background:#1a1a1a;
+  border-right:1px solid #2a2a2a;
+  overflow-y:auto;padding:14px 13px 20px;
+  font-size:12px;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
+.section{margin-bottom:16px}
+.section-title{font-size:10px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px}
+.row label{font-size:11px;color:#888;white-space:nowrap}
+.row input[type=number]{
+  width:62px;font-size:12px;padding:3px 6px;height:26px;
+  background:#252525;border:1px solid #333;border-radius:4px;color:#ddd;text-align:right;
+  outline:none;
+}
+.row input[type=number]:focus{border-color:#555}
+.row input[type=color]{
+  width:34px;height:26px;padding:2px;
+  border:1px solid #333;border-radius:4px;cursor:pointer;background:#252525;
+}
+.row select{
+  font-size:11px;padding:3px 5px;height:26px;flex:1;
+  background:#252525;border:1px solid #333;border-radius:4px;color:#ddd;outline:none;
+}
+.row select:focus{border-color:#555}
+.row input[type=range]{flex:1;height:26px;accent-color:#666}
+.val{font-size:11px;color:#666;min-width:26px;text-align:right}
+.row input[type=text]{
+  flex:1;font-size:12px;padding:3px 6px;height:26px;
+  background:#252525;border:1px solid #333;border-radius:4px;color:#ddd;outline:none;
+}
+.row input[type=text]:focus{border-color:#555}
+.btn-rebuild{
+  width:100%;font-size:11px;padding:6px;cursor:pointer;margin-top:2px;
+  background:#252525;border:1px solid #333;border-radius:5px;color:#aaa;
+  transition:all .15s;
+}
+.btn-rebuild:hover{background:#2e2e2e;color:#ddd;border-color:#444}
+.upload-zone{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:5px;width:100%;height:68px;cursor:pointer;
+  border:1px dashed #333;border-radius:6px;
+  font-size:11px;color:#666;background:#1e1e1e;transition:border-color .2s;
+}
+.upload-zone:hover{border-color:#555;color:#999}
+#img-preview{width:100%;height:54px;object-fit:cover;border-radius:4px;display:none;margin-top:7px}
+#clear-img{display:none;width:100%;font-size:10px;padding:4px;cursor:pointer;margin-top:5px;
+  background:transparent;border:1px solid #333;border-radius:4px;color:#666;
+  transition:all .15s;
+}
+#clear-img:hover{border-color:#555;color:#aaa}
+input[type=file]{display:none}
+#cw{flex:1;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#111}
+canvas{display:block;cursor:crosshair}
+#hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:rgba(255,255,255,0.25);pointer-events:none;
+  white-space:nowrap;transition:opacity .6s;
+  background:rgba(0,0,0,.45);padding:3px 10px;border-radius:20px;
+  z-index:10;
+}
+.mode-tabs{display:flex;gap:4px;margin-bottom:10px}
+.tab{
+  flex:1;font-size:10px;padding:4px 0;cursor:pointer;text-align:center;
+  border-radius:4px;border:1px solid #2e2e2e;color:#666;background:transparent;transition:all .15s;
+}
+.tab.active{background:#2e2e2e;color:#ccc;border-color:#3e3e3e}
+.tab:hover:not(.active){border-color:#3a3a3a;color:#999}
+.font-upload-zone{
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  width:100%;height:32px;cursor:pointer;
+  border:1px dashed #333;border-radius:4px;
+  font-size:10px;color:#666;background:#1e1e1e;transition:all .2s;margin-top:4px;
+}
+.font-upload-zone:hover{border-color:#555;color:#999}
+#font-label{font-size:10px;color:#555;margin-top:4px;text-align:center;word-break:break-all}
+.sep{height:1px;background:#222;margin:4px 0 12px}
+</style>
+</head>
+<body>
+
+<div id="app">
+<div id="sidebar">
+
+  <div class="section">
+    <div class="section-title">Canvas</div>
+    <div class="row"><label>Layout</label>
+      <select id="layout">
+        <option value="square" selected>Square</option>
+        <option value="portrait">Portrait</option>
+        <option value="widescreen">16:9</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Mode</div>
+    <div class="mode-tabs">
+      <button class="tab active" id="tab-text" onclick="setMode('text')">Text</button>
+      <button class="tab" id="tab-image" onclick="setMode('image')">Image</button>
+    </div>
+  </div>
+
+  <!-- TEXT panel -->
+  <div id="panel-text">
+    <div class="section">
+      <div class="section-title">Content</div>
+      <div class="row"><label>Text</label><input type="text" id="txt" value="Hello" maxlength="80" placeholder="Enter text…"></div>
+      <div class="row"><label>Size</label><input type="number" id="fsize" value="150" min="20" max="320" step="5"></div>
+      <div class="row"><label>Line H</label><input type="number" id="lineheight" value="1.1" min="0.8" max="2.5" step="0.05"></div>
+      <div class="row"><label>Font</label>
+        <select id="ffam">
+          <option value="normal {s}px 'NeueHaas'">NeueHaas Roman</option>
+          <option value="bold {s}px 'ManukaBold'">Manuka Bold</option>
+          <option value="900 {s}px Impact" selected>Impact</option>
+          <option value="900 {s}px Arial Black">Arial Black</option>
+          <option value="bold {s}px Georgia">Georgia</option>
+          <option value="bold {s}px Verdana">Verdana</option>
+          <option value="bold {s}px 'Courier New'">Courier</option>
+          <option value="custom" id="custom-font-opt" style="display:none">Custom font</option>
+        </select>
+      </div>
+      <label class="font-upload-zone" for="fontInput">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2v9M4 6l4-4 4 4" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12v1a1 1 0 001 1h10a1 1 0 001-1v-1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Upload font (.ttf/.otf/.woff)
+      </label>
+      <input type="file" id="fontInput" accept=".ttf,.otf,.woff,.woff2">
+      <div id="font-label"></div>
+    </div>
+  </div>
+
+  <!-- IMAGE panel -->
+  <div id="panel-image" style="display:none">
+    <div class="section">
+      <div class="section-title">Image</div>
+      <label class="upload-zone" for="fileInput">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M10 3v10M6 7l4-4 4 4" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 14v1a2 2 0 002 2h10a2 2 0 002-2v-1" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span id="upload-label">Upload image</span>
+      </label>
+      <input type="file" id="fileInput" accept="image/*">
+      <img id="img-preview" alt="preview">
+      <button id="clear-img" onclick="clearImage()">✕ Remove image</button>
+      <div class="sep"></div>
+      <div class="row"><label>Scale</label><input type="range" id="imgscale" min="20" max="200" value="90"><span class="val" id="isv">90%</span></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- GRID -->
+  <div class="section">
+    <div class="section-title">Grid</div>
+    <div class="row"><label>Dot size</label><input type="number" id="dotsize" value="5" min="2" max="24" step="1"></div>
+    <div class="row"><label>Row gap</label><input type="number" id="rowgap" value="0.01" min="0" max="4" step="0.01"></div>
+    <div class="row"><label>Col gap</label><input type="number" id="colgap" value="0.5" min="0" max="6" step="0.1"></div>
+    <div class="row"><label>Density</label><input type="number" id="density" value="1" min="1" max="5" step="1"></div>
+    <div class="row"><label>Radius</label><input type="range" id="radius" min="0" max="50" value="8"><span class="val" id="rv">8%</span></div>
+  </div>
+
+  <!-- COLOURS -->
+  <div class="section">
+    <div class="section-title">Colours</div>
+    <div class="row"><label>Background</label><input type="color" id="cbg" value="#63080b"></div>
+    <div class="row"><label>Grid dots</label><input type="color" id="cgrid" value="#812326"></div>
+    <div class="row"><label>Text / Image</label><input type="color" id="ctxt" value="#FF575D"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Export</div>
+    <button class="tab" id="btn-png" style="display:block;width:100%;margin-bottom:6px;height:28px;">Save PNG</button>
+    <button class="tab" id="btn-rec" style="display:block;width:100%;height:28px;">● Record MP4</button>
+  </div>
+
+    <button class="btn-rebuild" id="rebuild">↺ Rebuild</button>
+</div>
+
+<div id="cw">
+  <canvas id="main"></canvas>
+  <div id="hint">nhấn giữ + kéo để tương tác</div>
+</div>
+</div>
+
+<script>
+(function(){
+const canvas=document.getElementById('main');
+const ctx=canvas.getContext('2d');
+const hint=document.getElementById('hint');
+
+let strands=[];
+let animId;
+let mx=-9999,my=-9999,pmx=-9999,pmy=-9999;
+let pressed=false;
+let windX=0,windY=0;
+let currentMode='text';
+let uploadedImage=null;
+let customFontName=null;
+
+// Fixed physics
+const WIND_POW=1.0, RESTORE_K=0.001, DAMPING=0.999;
+const AIR_DRAG=0.0018, DRAG_R=110, WIND_DECAY=0.62;
+const ITERATIONS=18, GRAVITY=0.13;
+
+function gv(id){return document.getElementById(id).value;}
+function gn(id){return parseFloat(gv(id));}
+
+function getP(){
+  const dot=Math.max(2,gn('dotsize'));
+  const rg=Math.max(0,gn('rowgap'));
+  const cg=Math.max(0,gn('colgap'));
+  let fontStr=gv('ffam');
+  if(fontStr==='custom'&&customFontName){
+    const s=parseInt(gn('fsize'))||150;
+    fontStr=`bold ${s}px "${customFontName}"`;
+  }
+  return{
+    dot,rg,cg,
+    den:Math.max(1,parseInt(gn('density'))),
+    rad:parseInt(gv('radius')),
+    rowStep:dot*(1+rg),
+    colStep:dot*(1+cg),
+    fsize:parseInt(gn('fsize'))||150,
+    lineH:parseFloat(gv('lineheight'))||1.1,
+    fontStr,
+    text:gv('txt')||'Wave',
+    cbg:gv('cbg'),cgrid:gv('cgrid'),ctxt:gv('ctxt'),
+    imgScale:parseInt(gv('imgscale'))||90,
+  };
+}
+
+function resize(){
+  const wrap=document.getElementById('cw');
+  const cw=wrap.clientWidth;
+  const ch=wrap.clientHeight||600;
+  const layoutEl=document.getElementById('layout');
+  const layout=layoutEl?layoutEl.value:'square';
+  let W,H;
+  if(layout==='square'){
+    const s=Math.min(cw,ch);
+    W=s;H=s;
+  } else if(layout==='portrait'){
+    // 4:5
+    if(cw/ch<0.8){W=cw;H=cw/0.8;}
+    else{H=ch;W=ch*0.8;}
+  } else {
+    // 16:9
+    if(cw/ch>16/9){H=ch;W=ch*(16/9);}
+    else{W=cw;H=cw*(9/16);}
+  }
+  canvas.width=Math.floor(W);
+  canvas.height=Math.floor(H);
+  canvas.style.width=Math.floor(W)+'px';
+  canvas.style.height=Math.floor(H)+'px';
+}
+
+// ── word-wrap text into lines ─────────────────────────────────
+function wrapText(oc, text, fontStr, maxWidth){
+  oc.font=fontStr;
+  const words=text.split(/\s+/).filter(Boolean);
+  const lines=[];
+  let current='';
+  for(const w of words){
+    const test=current?current+' '+w:w;
+    if(oc.measureText(test).width<=maxWidth){
+      current=test;
+    } else {
+      if(current) lines.push(current);
+      // if single word is too wide, break by character
+      if(oc.measureText(w).width>maxWidth){
+        let sub='';
+        for(const ch of w){
+          if(oc.measureText(sub+ch).width>maxWidth){lines.push(sub);sub=ch;}
+          else sub+=ch;
+        }
+        if(sub) current=sub;
+        else current='';
+      } else {
+        current=w;
+      }
+    }
+  }
+  if(current) lines.push(current);
+  return lines;
+}
+
+// ── Text mask with auto-wrap ──────────────────────────────────
+function buildTextMask(p){
+  const W=canvas.width,H=canvas.height;
+  const gridW=W*0.80;
+  const gridH=H*0.75;
+  const fontStr=p.fontStr.replace('{s}',p.fsize);
+
+  const off=document.createElement('canvas');
+  off.width=W;off.height=H;
+  const oc=off.getContext('2d');
+  oc.clearRect(0,0,W,H);
+  oc.font=fontStr;
+  oc.textBaseline='top';
+  oc.textAlign='center';
+  oc.fillStyle='#fff';
+
+  const lines=wrapText(oc,p.text,fontStr,gridW*0.96);
+  const lineH=p.fsize*p.lineH;
+  const totalH=lines.length*lineH;
+  const startY=Math.max(0,(gridH-totalH)/2);
+  const cx=W/2;
+
+  for(let i=0;i<lines.length;i++){
+    oc.fillText(lines[i],cx,startY+i*lineH);
+  }
+
+  const img=oc.getImageData(0,0,W,H);
+  const px=img.data;
+  return(x,y)=>{
+    if(x<0||y<0||x>=W||y>=H) return false;
+    return px[(Math.floor(y)*W+Math.floor(x))*4+3]>45;
+  };
+}
+
+// ── Image mask ────────────────────────────────────────────────
+function buildImageMask(p){
+  const W=canvas.width,H=canvas.height;
+  const gridW=W*0.80, gridH=H*0.75;
+  const off=document.createElement('canvas');
+  off.width=W;off.height=H;
+  const oc=off.getContext('2d');
+  oc.clearRect(0,0,W,H);
+  const iw=uploadedImage.naturalWidth||uploadedImage.width;
+  const ih=uploadedImage.naturalHeight||uploadedImage.height;
+  const baseScale=Math.min(gridW/iw,gridH/ih);
+  const scale=baseScale*(p.imgScale/100);
+  const dw=iw*scale,dh=ih*scale;
+  const dx=(W-dw)/2,dy=(gridH-dh)/2;
+  oc.drawImage(uploadedImage,dx,dy,dw,dh);
+  const img=oc.getImageData(0,0,W,H);
+  const px=img.data;
+  return(x,y)=>{
+    if(x<0||y<0||x>=W||y>=H) return false;
+    const i=(Math.floor(y)*W+Math.floor(x))*4;
+    if(px[i+3]<60) return false;
+    return(px[i]+px[i+1]+px[i+2])/3>60;
+  };
+}
+
+function buildStrands(){
+  const p=getP();
+  const W=canvas.width,H=canvas.height;
+  const gridW=W*0.80;
+  const startX=(W-gridW)/2+p.colStep/2;
+  const endX=(W+gridW)/2;
+  const startY=p.rowStep/2;
+  const endY=H*0.75;
+  const inMask=(currentMode==='image'&&uploadedImage)?buildImageMask(p):buildTextMask(p);
+  strands=[];
+  for(let cx=startX;cx<endX;cx+=p.colStep*p.den){
+    const nodes=[];
+    for(let cy=startY;cy<endY;cy+=p.rowStep){
+      nodes.push({x:cx,y:cy,px:cx,py:cy,inText:inMask(cx,cy),fixed:nodes.length===0});
+    }
+    if(nodes.length>=2) strands.push({cx,nodes});
+  }
+}
+
+function step(){
+  const p=getP();
+  const REST=p.rowStep;
+  for(const s of strands){
+    const ns=s.nodes,N=ns.length,rcx=s.cx;
+    for(let i=1;i<N;i++){
+      const n=ns[i];
+      const depth=i/(N-1),swing=depth*depth;
+      let vx=(n.x-n.px)*DAMPING,vy=(n.y-n.py)*DAMPING;
+      const spd2=vx*vx+vy*vy;
+      if(spd2>0.0001){const spd=Math.sqrt(spd2),drag=AIR_DRAG*spd;vx-=vx*drag;vy-=vy*drag;}
+      if(pressed){
+        const dx=n.x-mx,dy=n.y-my,d2=dx*dx+dy*dy,r2=DRAG_R*DRAG_R;
+        if(d2<r2){const fall=(1-d2/r2)*(1-d2/r2);vx+=windX*WIND_POW*fall*swing;vy+=windY*WIND_POW*fall*swing*0.3;}
+      }
+      const offsetX=n.x-rcx;
+      vx-=offsetX*RESTORE_K*(1+Math.abs(offsetX)*0.002)*(1-swing*0.55);
+      n.px=n.x;n.py=n.y;n.x+=vx;n.y+=vy+GRAVITY;
+    }
+    for(let it=0;it<ITERATIONS;it++){
+      for(let i=0;i<N-1;i++){
+        const a=ns[i],b=ns[i+1];
+        const dx=b.x-a.x,dy=b.y-a.y;
+        const d=Math.sqrt(dx*dx+dy*dy)||0.001;
+        const diff=(d-REST)/d*0.5;
+        const hx=dx*diff,hy=dy*diff;
+        if(!a.fixed){a.x+=hx;a.y+=hy;}
+        if(!b.fixed){b.x-=hx;b.y-=hy;}
+      }
+    }
+  }
+  windX*=WIND_DECAY;windY*=WIND_DECAY;
+}
+
+function render(){
+  const p=getP();
+  const ds=p.dot,half=ds/2,rr=ds*(p.rad/100)*0.5;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle=p.cbg;ctx.fillRect(0,0,canvas.width,canvas.height);
+  for(const s of strands){
+    const ns=s.nodes;
+    if(ns.length<2) continue;
+    ctx.beginPath();ctx.moveTo(ns[0].x,ns[0].y);
+    for(let i=1;i<ns.length;i++) ctx.lineTo(ns[i].x,ns[i].y);
+    ctx.strokeStyle='rgba(255,255,255,0.05)';ctx.lineWidth=1;ctx.stroke();
+    for(let i=0;i<ns.length-1;i++){
+      if(ns[i].inText||ns[i+1].inText){
+        ctx.beginPath();ctx.moveTo(ns[i].x,ns[i].y);ctx.lineTo(ns[i+1].x,ns[i+1].y);
+        ctx.strokeStyle=p.ctxt+'44';ctx.lineWidth=1;ctx.stroke();
+      }
+    }
+    for(let i=0;i<ns.length;i++){
+      const n=ns[i];
+      ctx.fillStyle=n.inText?p.ctxt:p.cgrid;
+      ctx.beginPath();ctx.roundRect(n.x-half,n.y-half,ds,ds,rr);ctx.fill();
+    }
+  }
+}
+
+function loop(){step();render();animId=requestAnimationFrame(loop);}
+
+function init(){
+  if(animId) cancelAnimationFrame(animId);
+  resize();buildStrands();windX=windY=0;loop();
+}
+
+window.setMode=function(m){
+  currentMode=m;
+  document.getElementById('panel-text').style.display=m==='text'?'':'none';
+  document.getElementById('panel-image').style.display=m==='image'?'':'none';
+  document.getElementById('tab-text').classList.toggle('active',m==='text');
+  document.getElementById('tab-image').classList.toggle('active',m==='image');
+  init();
+};
+
+// ── Font upload ────────────────────────────────────────────────
+document.getElementById('fontInput').addEventListener('change',function(){
+  const file=this.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    customFontName='CustomFont_'+Date.now();
+    const ff=new FontFace(customFontName,e.target.result);
+    ff.load().then(loaded=>{
+      document.fonts.add(loaded);
+      const opt=document.getElementById('custom-font-opt');
+      opt.style.display='';
+      opt.textContent=file.name.replace(/\.[^.]+$/,'');
+      document.getElementById('ffam').value='custom';
+      document.getElementById('font-label').textContent='✓ '+file.name;
+      init();
+    });
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+// ── Image upload ───────────────────────────────────────────────
+document.getElementById('fileInput').addEventListener('change',function(){
+  const file=this.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      uploadedImage=img;
+      const preview=document.getElementById('img-preview');
+      preview.src=e.target.result;preview.style.display='block';
+      document.getElementById('clear-img').style.display='block';
+      document.getElementById('upload-label').textContent='Change image';
+      init();
+    };
+    img.src=e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+window.clearImage=function(){
+  uploadedImage=null;
+  document.getElementById('img-preview').style.display='none';
+  document.getElementById('clear-img').style.display='none';
+  document.getElementById('upload-label').textContent='Upload image';
+  document.getElementById('fileInput').value='';
+  init();
+};
+
+// ── Controls ───────────────────────────────────────────────────
+document.getElementById('radius').addEventListener('input',function(){document.getElementById('rv').textContent=this.value+'%';});
+document.getElementById('imgscale').addEventListener('input',function(){document.getElementById('isv').textContent=this.value+'%';init();});
+
+['dotsize','rowgap','colgap','density','ffam','fsize','lineheight','cbg','cgrid','ctxt','radius','layout'].forEach(id=>{
+  document.getElementById(id).addEventListener('change',init);
+});
+document.getElementById('radius').addEventListener('change',init);
+document.getElementById('rebuild').addEventListener('click',init);
+document.getElementById('txt').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();init();}});
+document.getElementById('txt').addEventListener('input',()=>clearTimeout(window._tw)&&(window._tw=setTimeout(init,400)));
+window.addEventListener('resize',init);
+
+// ── Mouse/Touch ────────────────────────────────────────────────
+function toC(cx,cy){
+  const r=canvas.getBoundingClientRect();
+  return{x:(cx-r.left)*(canvas.width/r.width),y:(cy-r.top)*(canvas.height/r.height)};
+}
+function onDown(cx,cy){pressed=true;const p=toC(cx,cy);pmx=mx=p.x;pmy=my=p.y;hint.style.opacity='0';}
+function onMove(cx,cy){
+  const p=toC(cx,cy);
+  if(pressed&&pmx>-9000){windX=(p.x-pmx)*0.36;windY=(p.y-pmy)*0.18;}
+  pmx=mx=p.x;pmy=my=p.y;
+}
+function onUp(){pressed=false;windX*=0.5;windY*=0.5;}
+
+const cw=document.getElementById('cw');
+cw.addEventListener('mousedown',e=>{e.preventDefault();onDown(e.clientX,e.clientY);});
+cw.addEventListener('mousemove',e=>onMove(e.clientX,e.clientY));
+window.addEventListener('mouseup',onUp);
+cw.addEventListener('mouseleave',()=>{mx=my=pmx=pmy=-9999;});
+cw.addEventListener('touchstart',e=>{e.preventDefault();onDown(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+cw.addEventListener('touchmove',e=>{e.preventDefault();onMove(e.touches[0].clientX,e.touches[0].clientY);},{passive:false});
+cw.addEventListener('touchend',onUp);
+
+init();
+
+// ── EXPORT ──────────────────────────────────────────────────────
+document.getElementById('btn-png').addEventListener('click',function(){
+  const a=document.createElement('a');
+  a.download='curtain.png';
+  a.href=canvas.toDataURL('image/png');
+  a.click();
+});
+let _rec=null,_recChunks=[];
+document.getElementById('btn-rec').addEventListener('click',function(){
+  if(_rec&&_rec.state==='recording'){_rec.stop();this.textContent='● Record MP4';return;}
+  const stream=canvas.captureStream(30);
+  _recChunks=[];
+  const mime=MediaRecorder.isTypeSupported('video/mp4')?'video/mp4':'video/webm';
+  _rec=new MediaRecorder(stream,{mimeType:mime});
+  _rec.ondataavailable=e=>_recChunks.push(e.data);
+  _rec.onstop=()=>{
+    const blob=new Blob(_recChunks,{type:mime});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.download='curtain.'+(mime.includes('mp4')?'mp4':'webm');
+    a.href=url;a.click();URL.revokeObjectURL(url);
+  };
+  _rec.start();this.textContent='■ Stop Recording';
+});
+
+})();
+</script>
+</body>
+</html>
