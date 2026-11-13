@@ -11,16 +11,18 @@
 @font-face { font-family:'StackSans'; src:url('StackSansText-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
 @font-face { font-family:'StackSans'; src:url('StackSansText-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
 @font-face { font-family:'NeueHaas'; src:url('NeueHaasDisplay-Roman.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'CrimsonPro'; src:url('CrimsonPro-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'CrimsonPro'; src:url('CrimsonPro-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; }
 
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'StackSans','Helvetica Neue',Arial,sans-serif;font-size:20px;line-height:1.1;color:#010101;background:#ffffee;-webkit-font-smoothing:antialiased;transition:background-color 0.4s ease,color 0.3s ease;}
+body{font-family:'CrimsonPro',Georgia,serif;font-size:22px;line-height:1.1;color:#010101;background:#ffffee;-webkit-font-smoothing:antialiased;transition:background-color 0.4s ease,color 0.3s ease;}
 /* ══ PER-PAGE BACKGROUNDS ════════════════════════════════════ */
-body.pg-information{background:#2B73C6;}
-body.pg-experiment{background:#010101;--black:#ffffee;--white:#010101;--border:#ffffee;color:#ffffee;}
-body.pg-tools{background:#BDF61F;}
-body.pg-readings{background:#D2C757;}
+body.pg-information{background:#B2D5FF;}
+body.pg-experiment{background:#8BFFEF;}
+body.pg-tools{background:#DBFF79;}
+body.pg-readings{background:#7CFFA6;}
 
 a{color:inherit;text-decoration:none;cursor:pointer;}
 button{cursor:pointer;font-family:inherit;}
@@ -28,7 +30,7 @@ img,video{display:block;max-width:100%;}
 
 /* ── VARIABLES ── */
 :root{
-  --fs:18px; --lh:1.1; --ff:'StackSans','Helvetica Neue',Arial,sans-serif;
+  --fs:20px; --lh:1.1; --ff:'CrimsonPro',Georgia,serif;
   --black:#010101; --white:#ffffee; --muted:#7C7C7C; --border:#010101; --gray:#7C7C7C;
   --margin:10px; --gutter:12px; --sgap:120px; --nav-h:40px; --radius:0px;
 }
@@ -39,7 +41,7 @@ img,video{display:block;max-width:100%;}
 /* ══ NAV ══════════════════════════════════════════════════════ */
 /* #nav uses same 6-col CSS grid as .pg for perfect column alignment */
 #nav{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gutter);align-items:center;background:transparent;box-sizing:border-box;padding:var(--margin) calc(1vw + var(--margin));max-width:98vw;margin-left:auto;margin-right:auto;width:100%;}
-.nav-logo{grid-column:1/3;font-size:var(--fs);font-weight:700;line-height:var(--lh);cursor:pointer;white-space:nowrap;color:var(--black);overflow:hidden;}
+.nav-logo{grid-column:1/3;font-size:var(--fs);font-weight:700;line-height:var(--lh);cursor:pointer;white-space:nowrap;color:var(--black);overflow:hidden;font-family:'StackSans','Helvetica Neue',Arial,sans-serif;}
 .nav-logo:hover{color:var(--muted);}
 #nav-information{grid-column:3;}
 #nav-experiment{grid-column:4;}
@@ -64,7 +66,7 @@ img,video{display:block;max-width:100%;}
 .home-bio p{margin-bottom:8px;}
 .home-bio .contact-links{color:var(--muted);}
 .home-bio .contact-links a:hover{color:var(--black);}
-.home-h1{grid-column:3/-1;font-size:70px;font-weight:400;line-height:1.05;letter-spacing:0;align-self:end;}
+.home-h1{grid-column:3/-1;font-size:80px;font-weight:400;line-height:1.05;letter-spacing:0;align-self:end;}
 
 /* ══ HOME — PROJECTS ══════════════════════════════════════════ */
 .home-projects{padding:var(--sgap) 0;}
@@ -75,14 +77,15 @@ img,video{display:block;max-width:100%;}
 .proj-sidebar-item{display:block;padding:10px 0;border-top:1px solid var(--border);font-size:var(--fs);color:var(--muted);cursor:pointer;transition:color .15s;}
 .proj-sidebar-item:last-child{border-bottom:1px solid var(--border);}
 .proj-sidebar-item:hover,.proj-sidebar-item.ps-active{color:var(--black);}
-.proj-masonry{grid-column:3/-1;columns:2;column-gap:var(--gutter);}
-.proj-masonry-card{break-inside:avoid;margin-bottom:var(--gutter);cursor:pointer;display:block;}
+.proj-masonry{grid-column:3/-1;display:flex;gap:var(--gutter);}
+.proj-col{flex:1;display:flex;flex-direction:column;gap:var(--gutter);}
+.proj-masonry-card{cursor:pointer;display:block;}
 .proj-masonry-card img,.proj-masonry-card video{width:100%;height:auto;display:block;transition:opacity .2s;background:#d8d8d8;border-radius:5px;}
 
 .proj-masonry-ph{width:100%;aspect-ratio:4/3;background:#d8d8d8;display:block;border-radius:5px;}
-.proj-card-meta{padding:8px 0 0;}
-.proj-card-title{display:block;font-size:var(--fs);color:var(--black);line-height:var(--lh);}
-.proj-card-scope{display:block;font-size:calc(var(--fs)*0.75);color:var(--muted);line-height:var(--lh);margin-top:5px;}
+.proj-card-meta{display:none;}
+.proj-card-title{display:none;font-size:var(--fs);color:var(--black);line-height:var(--lh);}
+.proj-card-scope{display:none;font-size:calc(var(--fs)*0.75);color:var(--muted);line-height:var(--lh);margin-top:3px;font-style:italic;}
 
 /* ══ PROJECT POPUP ════════════════════════════════════════════ */
 .proj-popup{display:none;position:fixed;inset:0;z-index:400;background:var(--white);overflow-y:auto;}
@@ -117,7 +120,7 @@ img,video{display:block;max-width:100%;}
 .info-bio-l p,.info-bio-r p{margin-bottom:12px;}
 .info-section{padding:var(--sgap) 0 0;}
 .info-section .pg{align-items:start;}
-.info-sec-label{grid-column:1/3;font-size:var(--fs);padding-top:10px;font-family:'StackSans','Helvetica Neue',Arial,sans-serif;font-weight:700;}
+.info-sec-label{grid-column:1/3;font-size:var(--fs);padding-top:10px;font-family:'CrimsonPro',Georgia,serif;font-weight:700;}
 .info-sec-body{grid-column:3/-1;}
 .info-row{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:var(--gutter);border-top:1px solid var(--border);padding:10px 0;align-items:baseline;}
 .info-row:last-child{border-bottom:1px solid var(--border);}
@@ -192,7 +195,7 @@ img,video{display:block;max-width:100%;}
 /* ══ FOOTER ═══════════════════════════════════════════════════ */
 .site-footer{padding-top:40px;}
 .footer-brand{max-width:98vw;margin:0 auto;padding:0 var(--margin);box-sizing:border-box;overflow:hidden;}
-.footer-logo{display:block;font-size:120px;font-weight:700;line-height:1;cursor:default;letter-spacing:-0.01em;user-select:none;white-space:nowrap;overflow:hidden;text-align:center;}
+.footer-logo{display:block;font-size:120px;font-weight:700;line-height:1;cursor:default;letter-spacing:-0.01em;user-select:none;white-space:nowrap;overflow:hidden;text-align:center;font-family:'StackSans','Helvetica Neue',Arial,sans-serif;}
 .footer-logo .fl{display:inline-block;}
 .footer-divider{height:1px;background:var(--border);margin:var(--gutter) 0 0;}
 .footer-links{padding:var(--gutter) var(--margin) calc(var(--margin)*2);max-width:98vw;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gutter);box-sizing:border-box;}
@@ -208,7 +211,7 @@ img,video{display:block;max-width:100%;}
 
 /* ══ POPUP BAR — sticky header inside each popup ══════════════ */
 .popup-bar{position:sticky;top:0;z-index:10;background:var(--white);display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gutter);align-items:center;padding:var(--margin) calc(1vw + var(--margin));max-width:100%;box-sizing:border-box;}
-.popup-bar-logo{grid-column:1/3;font-size:var(--fs);font-weight:700;line-height:var(--lh);cursor:pointer;white-space:nowrap;color:var(--black);}
+.popup-bar-logo{grid-column:1/3;font-size:var(--fs);font-weight:700;line-height:var(--lh);cursor:pointer;white-space:nowrap;color:var(--black);font-family:'StackSans','Helvetica Neue',Arial,sans-serif;}
 .popup-bar-logo:hover{color:var(--muted);}
 .popup-bar-close{grid-column:6;text-align:right;cursor:pointer;color:var(--black);font-size:calc(var(--fs)*1.5);line-height:var(--lh);}
 .popup-bar-close:hover{color:var(--muted);}
@@ -263,7 +266,7 @@ img,video{display:block;max-width:100%;}
 .cms-tab {
   font-size: calc(var(--fs) * 0.7);
   font-weight: 500;
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   color: var(--gray);
   background: none;
   border: none;
@@ -284,7 +287,7 @@ img,video{display:block;max-width:100%;}
   display: block;
   font-size: calc(var(--fs) * 0.6);
   font-weight: 500;
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   line-height: var(--lh);
   color: var(--black);
   margin-bottom: calc(var(--fs) * 0.2);
@@ -296,7 +299,7 @@ img,video{display:block;max-width:100%;}
   width: 100%;
   border: 1px solid var(--border);
   padding: calc(var(--fs) * 0.25) calc(var(--fs) * 0.3);
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   font-size: calc(var(--fs) * 0.6);
   font-weight: 500;
   line-height: var(--lh);
@@ -313,7 +316,7 @@ img,video{display:block;max-width:100%;}
   color: var(--white);
   border: none;
   padding: calc(var(--fs) * 0.3) calc(var(--fs) * 0.8);
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   font-size: calc(var(--fs) * 0.6);
   font-weight: 500;
   cursor: pointer;
@@ -323,7 +326,7 @@ img,video{display:block;max-width:100%;}
   background: none;
   border: none;
   font-size: calc(var(--fs) * 0.7);
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   font-weight: 500;
   cursor: pointer;
   color: var(--gray);
@@ -345,14 +348,14 @@ img,video{display:block;max-width:100%;}
   border-bottom: 1px solid var(--border);
   font-size: calc(var(--fs) * 0.6);
   font-weight: 500;
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   line-height: var(--lh);
 }
 .cms-entry button {
   background: none;
   border: 1px solid var(--border);
   padding: 3px 10px;
-  font-family: 'NeueHaas', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'CrimsonPro', Georgia, serif;
   font-size: calc(var(--fs) * 0.5);
   font-weight: 500;
   cursor: pointer;
@@ -402,7 +405,7 @@ img,video{display:block;max-width:100%;}
 ══════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   /* Variables */
-  :root{--sgap:60px;--fs:16px;}
+  :root{--sgap:60px;--fs:18px;}
 
   /* ── Nav ── */
   #nav{grid-template-columns:1fr auto;gap:0;}
@@ -421,7 +424,8 @@ img,video{display:block;max-width:100%;}
   /* ── Home projects ── */
   .home-projects .pg{grid-template-columns:1fr;align-items:start;}
   .proj-sidebar{display:none;}
-  .proj-masonry{grid-column:1/-1;columns:1;}
+  .proj-masonry{grid-column:1/-1;flex-direction:column;}
+  .proj-col{flex:none;width:100%;}
   .mob-proj-header{display:block;grid-column:1/-1;border-top:1px solid var(--border);padding:10px 0 var(--gutter);margin-top:var(--sgap);}
   .mob-proj-label{font-size:var(--fs);}
 
@@ -595,7 +599,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"   href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance" href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance" href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"      href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -629,7 +633,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -674,7 +678,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -697,7 +701,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -725,7 +729,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -748,7 +752,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -789,7 +793,7 @@ img,video{display:block;max-width:100%;}
       <span class="footer-copy">&#169; 2026 Vu Huy<br>All rights reserved</span>
       <a class="footer-links-email"    href="mailto:qhuyvu.14@gmail.com">Email</a>
       <a class="footer-links-linkedin" href="https://www.linkedin.com/in/huy-vu-878137170/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="footer-links-behance"  href="https://www.behance.net/" target="_blank" rel="noopener">Behance</a>
+      <a class="footer-links-behance"  href="https://www.behance.net/vhuy" target="_blank" rel="noopener">Behance</a>
       <a class="footer-links-ig"       href="https://www.instagram.com/worksbyvh/" target="_blank" rel="noopener">Instagram</a>
     </div>
   </div>
@@ -823,8 +827,7 @@ img,video{display:block;max-width:100%;}
       <div class="cms-field"><label>Images / Videos</label>
         <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
           <input type="file" id="cp-imgs-file" accept="image/*,video/*" multiple="" style="font-size:calc(var(--fs)*0.6);padding:calc(var(--fs)*0.2) 0;flex:1;">
-          <button type="button" onclick="document.getElementById('cp-grid-file').click()" style="font-size:calc(var(--fs)*0.55);padding:4px 10px;background:none;border:1px solid var(--border);cursor:pointer;white-space:nowrap;border-radius:3px;">+ Grid (2–4)</button>
-          <input type="file" id="cp-grid-file" accept="image/*,video/*" multiple style="display:none" onchange="handleGridUpload(this)">
+          <button type="button" onclick="openGridBuilder()" style="font-size:calc(var(--fs)*0.55);padding:4px 10px;background:none;border:1px solid var(--border);cursor:pointer;white-space:nowrap;border-radius:3px;">+ Grid (2–4)</button>
         </div>
         <div id="cp-imgs-preview"></div>
       </div>
@@ -912,6 +915,23 @@ Book Title Two
 </div>
 
 <script src="data.js"></script>
+<!-- Grid Builder Modal -->
+<div id="grid-builder-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;">
+  <div style="background:var(--white);padding:20px 20px 16px;width:420px;max-width:90vw;max-height:85vh;overflow-y:auto;border-radius:4px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <strong style="font-size:calc(var(--fs)*0.7);">Grid Builder (2–4 images)</strong>
+      <button onclick="closeGridBuilder()" style="background:none;border:none;cursor:pointer;font-size:16px;line-height:1;padding:0 2px;">×</button>
+    </div>
+    <div id="grid-builder-preview" style="display:flex;flex-wrap:wrap;gap:6px;min-height:70px;border:1px solid var(--border);padding:8px;margin-bottom:8px;border-radius:3px;"></div>
+    <div style="font-size:calc(var(--fs)*0.5);color:var(--muted);margin-bottom:12px;" id="grid-builder-count">0 / 4 images — select 2 to 4</div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <button id="grid-builder-add-btn" onclick="document.getElementById('grid-builder-file').click()" style="font-size:calc(var(--fs)*0.55);padding:4px 12px;background:none;border:1px solid var(--border);cursor:pointer;border-radius:3px;">+ Add Image</button>
+      <input type="file" id="grid-builder-file" accept="image/*,video/*" multiple style="display:none" onchange="gridBuilderAddFile(this)">
+      <button id="grid-builder-save-btn" onclick="confirmGridBuilder()" style="font-size:calc(var(--fs)*0.55);padding:4px 12px;background:var(--black);color:var(--white);border:none;cursor:pointer;border-radius:3px;" disabled>Add Grid to Project</button>
+      <button onclick="closeGridBuilder()" style="font-size:calc(var(--fs)*0.55);padding:4px 10px;background:none;border:1px solid var(--border);cursor:pointer;border-radius:3px;">Cancel</button>
+    </div>
+  </div>
+</div>
 <script>
 // __LOAD_RESET__
 (function(){
@@ -1046,10 +1066,9 @@ function renderProjects(){
   // Masonry grid
   const grid=document.getElementById('proj-masonry');
   if(!grid)return;
-  grid.innerHTML=PROJECTS.map((p,i)=>{
+  function makeCard(p,i){
     const _f=p.imgs&&p.imgs[0];const thumb=p.thumb||(Array.isArray(_f)?_f[0]:_f);
     const isVid=thumb&&/\.(mp4|webm|mov)$/i.test(thumb);
-    const isGif=thumb&&/\.gif$/i.test(thumb);
     let media;
     if(!thumb){
       media='<div class="proj-masonry-ph"></div>';
@@ -1059,7 +1078,10 @@ function renderProjects(){
       media=`<img src="${thumb}" alt="${p.title}" style="min-height:80px;">`;
     }
     return `<div class="proj-masonry-card" onclick="openProjPopup(${i})">${media}<div class="proj-card-meta"><span class="proj-card-title">${p.title||''}</span>${p.scope?`<span class="proj-card-scope">${p.scope}</span>`:''}</div></div>`;
-  }).join('');
+  }
+  const left=[],right=[];
+  PROJECTS.forEach((p,i)=>{ (i%2===0?left:right).push(makeCard(p,i)); });
+  grid.innerHTML=`<div class="proj-col">${left.join('')}</div><div class="proj-col">${right.join('')}</div>`;
 }
 
 function openProjPopup(i){
@@ -1385,6 +1407,65 @@ async function handleGridUpload(input){
     if(urls.length>=2){_editingImgs.push(urls);renderImgPreview();}
   }catch(e){alert('Upload failed: '+e.message);}
   finally{btn.disabled=false;btn.textContent=prev;input.value='';}
+}
+
+// ── Grid Builder Modal ──
+let _pendingGrid=[];
+function openGridBuilder(){
+  _pendingGrid=[];
+  renderGridBuilderPreview();
+  const m=document.getElementById('grid-builder-modal');
+  m.style.display='flex';
+}
+function closeGridBuilder(){
+  _pendingGrid=[];
+  document.getElementById('grid-builder-modal').style.display='none';
+}
+function renderGridBuilderPreview(){
+  const el=document.getElementById('grid-builder-preview');
+  const countEl=document.getElementById('grid-builder-count');
+  const saveBtn=document.getElementById('grid-builder-save-btn');
+  const addBtn=document.getElementById('grid-builder-add-btn');
+  if(!el)return;
+  el.innerHTML=_pendingGrid.map((url,i)=>{
+    const isVid=/\.(mp4|webm|mov)$/i.test(url);
+    const media=isVid
+      ?`<video src="${url}" muted playsinline style="width:90px;height:68px;object-fit:cover;display:block;border-radius:3px;"></video>`
+      :`<img src="${url}" style="width:90px;height:68px;object-fit:cover;display:block;border-radius:3px;">`;
+    return `<div style="position:relative;">${media}<button onclick="gridBuilderRemove(${i})" title="Remove" style="position:absolute;top:3px;right:3px;width:18px;height:18px;background:rgba(0,0,0,0.65);color:#fff;border:none;cursor:pointer;font-size:11px;line-height:1;padding:0;border-radius:2px;">×</button></div>`;
+  }).join('');
+  if(!_pendingGrid.length) el.innerHTML='<span style="font-size:calc(var(--fs)*0.5);color:var(--muted);align-self:center;margin:auto;">No images yet</span>';
+  countEl.textContent=_pendingGrid.length+' / 4 images'+((_pendingGrid.length<2)?' — need at least 2':'');
+  saveBtn.disabled=_pendingGrid.length<2;
+  if(addBtn) addBtn.disabled=_pendingGrid.length>=4;
+}
+function gridBuilderRemove(i){
+  _pendingGrid.splice(i,1);
+  renderGridBuilderPreview();
+}
+async function gridBuilderAddFile(input){
+  if(!input.files||!input.files.length)return;
+  const remaining=4-_pendingGrid.length;
+  if(remaining<=0)return;
+  const files=Array.from(input.files).slice(0,remaining);
+  const addBtn=document.getElementById('grid-builder-add-btn');
+  if(addBtn){addBtn.disabled=true;addBtn.textContent='Uploading…';}
+  try{
+    const urls=await uploadFiles(files,CLD_FOLDERS.projects);
+    _pendingGrid.push(...urls);
+    renderGridBuilderPreview();
+  }catch(e){alert('Upload failed: '+e.message);}
+  finally{
+    if(addBtn){addBtn.textContent='+ Add Image';}
+    renderGridBuilderPreview();
+    input.value='';
+  }
+}
+function confirmGridBuilder(){
+  if(_pendingGrid.length<2)return;
+  _editingImgs.push([..._pendingGrid]);
+  renderImgPreview();
+  closeGridBuilder();
 }
 function ungroupImgs(i){
   const group=_editingImgs[i];
