@@ -136,16 +136,26 @@ img,video{display:block;max-width:100%;}
 
 /* ══ EXPERIMENT PAGE ══════════════════════════════════════════ */
 .exp-intro{grid-column:5/-1;align-self:end;}
-.exp-grid{padding:var(--sgap) var(--margin);display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gutter);row-gap:calc(var(--gutter)*4);max-width:98vw;margin:0 auto;}
+.exp-grid{padding:var(--sgap) var(--margin);display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gutter);max-width:98vw;margin:0 auto;}
 .exp-thumb{aspect-ratio:4/5;overflow:hidden;cursor:pointer;background:#d8d8d8;position:relative;border-radius:5px;}
 .exp-thumb img,.exp-thumb video{width:100%;height:100%;object-fit:cover;transition:opacity .2s;}
 .exp-num{font-size:var(--fs);color:var(--muted);padding-top:8px;line-height:var(--lh);}
 .exp-wrap{display:flex;flex-direction:column;}
 
 
-/* ══ EXPERIMENT POPUP ═════════════════════════════════════════ */
-.exp-popup{display:none;position:fixed;inset:0;z-index:400;background:var(--white);overflow-y:auto;}
-.exp-popup.open{display:block;}
+/* ══ EXPERIMENT POPUP (legacy, unused) ═══════════════════════ */
+.exp-popup{display:none;}
+
+/* ══ EXPERIMENT LIGHTBOX ══════════════════════════════════════ */
+.exp-lb{display:none;position:fixed;inset:0;z-index:500;align-items:center;justify-content:center;}
+.exp-lb.open{display:flex;}
+.exp-lb-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+.exp-lb-box{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:min(340px,78vw);}
+.exp-lb-video{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:6px;background:#111;display:block;}
+.exp-lb-controls{position:absolute;top:12px;right:12px;display:flex;gap:6px;z-index:2;}
+.exp-lb-btn{background:rgba(0,0,0,0.7);color:#fff;border:1px solid rgba(255,255,255,0.2);padding:4px 12px;font-size:14px;font-family:'CrimsonPro',Georgia,serif;cursor:pointer;border-radius:3px;}
+.exp-lb-btn:hover{background:rgba(0,0,0,0.9);}
+.exp-lb-counter{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:12px;font-family:'CrimsonPro',Georgia,serif;white-space:nowrap;}
 .ep-videos{padding:var(--sgap) var(--margin) var(--gutter);display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gutter);max-width:98vw;margin:0 auto;}
 .ep-video-item video,.ep-video-item img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#d8d8d8;border-radius:5px;}
 .ep-meta{padding:var(--gutter) var(--margin);display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gutter);max-width:98vw;margin:0 auto;}
@@ -439,7 +449,8 @@ img,video{display:block;max-width:100%;}
 
   /* ── Experiment page ── */
   .exp-intro{grid-column:1/-1;}
-  .exp-grid{grid-template-columns:repeat(2,1fr);row-gap:calc(var(--gutter)*2);}
+  .exp-grid{grid-template-columns:repeat(2,1fr);}
+  .exp-lb-box{width:min(340px,90vw);}
 
   /* ── Tools page ── */
   .tools-intro{grid-column:1/-1;}
@@ -490,6 +501,59 @@ img,video{display:block;max-width:100%;}
   .nav-logo:hover{color:var(--black);}
   #nav a:hover{color:var(--black);}
 }
+
+/* ── Experiment thumbnail grid in CMS ── */
+.cms-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 6px;
+  margin-top: 10px;
+}
+.cms-exp-card {
+  position: relative;
+  cursor: grab;
+  user-select: none;
+}
+.cms-exp-card.drag-over { outline: 2px solid var(--black); }
+.cms-exp-card.drag-active { opacity: 0.4; }
+.cms-exp-card:active { cursor: grabbing; }
+/* Group separator in flat grid: left border per experiment group */
+.cms-exp-group-start { border-left: 2px solid var(--black); padding-left: 2px; }
+.cms-exp-thumb {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  background: #ddd;
+}
+.cms-exp-label {
+  font-size: 10px;
+  font-family: 'CrimsonPro',Georgia,serif;
+  color: #666;
+  padding: 3px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cms-exp-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  border: none;
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.12s;
+  padding: 0;
+  font-family: 'CrimsonPro',Georgia,serif;
+}
+.cms-exp-card:hover .cms-exp-remove { opacity: 1; }
 
 /* ── Project image preview grid in CMS ── */
 #cp-imgs-preview {
@@ -708,6 +772,18 @@ img,video{display:block;max-width:100%;}
 </div>
 
 <!-- ══ EXPERIMENT POPUP ═══════════════════════════════════════ -->
+<!-- ══ EXPERIMENT LIGHTBOX ════════════════════════════════════ -->
+<div class="exp-lb" id="exp-lb">
+  <div class="exp-lb-backdrop" onclick="closeExpLb()"></div>
+  <div class="exp-lb-box">
+    <video class="exp-lb-video" id="exp-lb-video" muted loop playsinline autoplay></video>
+    <div class="exp-lb-controls">
+      <button class="exp-lb-btn" onclick="closeExpLb()">Close</button>
+    </div>
+    <div class="exp-lb-counter" id="exp-lb-counter"></div>
+  </div>
+</div>
+
 <div class="exp-popup" id="exp-popup">
   <div class="popup-bar">
     <span class="popup-bar-logo" onclick="closeExpPopup()">WORKSBYVH</span>
@@ -1150,22 +1226,27 @@ function cldPoster(url){
 
 function renderExperiments(){
   const _expData=(EXPERIMENTS&&EXPERIMENTS.length)?EXPERIMENTS:(typeof _DE!=='undefined'?_DE:[]);
-  document.getElementById('exp-grid').innerHTML=_expData.map((e,i)=>{
-    const thumb=e.media&&e.media[0];
-    const isVideo=thumb&&/\.(mp4|webm|mov)$/i.test(thumb);
+  // Flatten all media into individual cards
+  const cards=[];
+  _expData.forEach((e)=>{
+    (e.media||[e.media]).filter(Boolean).forEach((src)=>{
+      cards.push(src);
+    });
+  });
+  _expLbList=cards.map((src,fi)=>({src,flatIdx:fi}));
+  const num=String(cards.length).padStart(3,'0');
+  document.getElementById('exp-grid').innerHTML=cards.map((src,fi)=>{
+    const isVideo=/\.(mp4|webm|mov)$/i.test(src);
     let inner;
-    if(!thumb){
-      inner='<div style="width:100%;height:100%;background:#d8d8d8;"></div>';
-    } else if(isVideo){
-      inner=`<img class="exp-thumb-poster" src="${cldPoster(thumb)}" alt=""
+    if(isVideo){
+      inner=`<img class="exp-thumb-poster" src="${cldPoster(src)}" alt=""
         onerror="var r=parseInt(this.dataset.r||'0');if(r<3){this.dataset.r=r+1;var s=this;setTimeout(function(){s.src=cldPoster(s.dataset.v)+'?r='+Date.now();},r<1?3000:8000);}else{this.style.opacity=0;}"
-        data-v="${thumb}" style="width:100%;height:100%;object-fit:cover;">
-        <video src="${thumb}" muted loop preload="none" style="display:none;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0"></video>`;
+        data-v="${src}" style="width:100%;height:100%;object-fit:cover;">
+        <video src="${src}" muted loop preload="none" style="display:none;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0"></video>`;
     } else {
-      inner=`<img src="${thumb}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
+      inner=`<img src="${src}" alt="" style="width:100%;height:100%;object-fit:cover;">`;
     }
-    const num=String(i+1).padStart(3,'0');
-    return `<div class="exp-wrap"><div class="exp-thumb" style="position:relative;" onclick="openExpPopup(${i})" onmouseenter="expPrev(this)" onmouseleave="expStop(this)">${inner}</div><div class="exp-num">${num}</div></div>`;
+    return `<div class="exp-wrap"><div class="exp-thumb" style="position:relative;" onclick="openExpPopup(${fi})" onmouseenter="expPrev(this)" onmouseleave="expStop(this)">${inner}</div></div>`;
   }).join('');
 }
 
@@ -1180,49 +1261,44 @@ function expStop(el){
   if(v){v.pause();v.currentTime=0;v.style.display='none';if(img)img.style.display='block';}
 }
 
-function renderExpGroup(i){
-  _expGroupStart=((i%EXPERIMENTS.length)+EXPERIMENTS.length)%EXPERIMENTS.length;
-  const e=EXPERIMENTS[_expGroupStart];
-  const mediaList=e.media||[];
-  // Videos: show all variations of this single experiment
-  document.getElementById('ep-videos').innerHTML=mediaList.map((media)=>{
-    const isVid=/\.(mp4|webm|mov)$/i.test(media);
-    let inner;
-    if(isVid){
-      inner=`<video src="${media}" controls muted loop playsinline></video>`;
-    } else {
-      inner=`<img src="${media}" alt="">`;
-    }
-    return `<div class="ep-video-item">${inner}</div>`;
-  }).join('');
-  // Meta: info for this experiment
-  const num=String(_expGroupStart+1).padStart(3,'0');
-  document.getElementById('ep-num').textContent=num;
-  document.getElementById('ep-soft').innerHTML=`<span class="ml">Tool</span>${e.tool||'—'}`;
-  document.getElementById('ep-year').innerHTML=`<span class="ml">Year</span>${e.year||'—'}`;
-  // Next = next experiment
-  const hasNext=_expGroupStart+1<EXPERIMENTS.length;
-  document.getElementById('ep-next').style.visibility=hasNext?'visible':'hidden';
+let _expLbList=[],_expLbIdx=0;
+
+function openExpPopup(fi){
+  _expLbIdx=fi;
+  expLbShow();
 }
 
-function openExpPopup(i){
-  document.getElementById('exp-popup').classList.add('open');
-  document.getElementById('exp-popup').scrollTop=0;
+function expLbShow(){
+  const item=_expLbList[_expLbIdx];
+  if(!item)return;
+  const vid=document.getElementById('exp-lb-video');
+  // Transfer buffered video from hovered thumbnail if possible
+  const thumbVids=document.querySelectorAll('.exp-thumb video');
+  let buffered=null;
+  thumbVids.forEach(tv=>{if(tv.src===item.src&&tv.readyState>0)buffered=tv;});
+  if(buffered){
+    vid.src=item.src;
+    vid.currentTime=buffered.currentTime;
+  } else {
+    vid.src=item.src;
+  }
+  vid.muted=true;
+  vid.play().catch(()=>{});
+  document.getElementById('exp-lb-counter').textContent=`${_expLbIdx+1} / ${_expLbList.length}`;
+  document.getElementById('exp-lb').classList.add('open');
   document.body.style.overflow='hidden';
-  showNavClose();
-  renderExpGroup(i);
 }
 
-function expNextGroup(){
-  renderExpGroup(_expGroupStart+1);
-  document.getElementById('exp-popup').scrollTop=0;
-}
-
-function closeExpPopup(){
-  document.getElementById('exp-popup').classList.remove('open');
+function closeExpLb(){
+  document.getElementById('exp-lb').classList.remove('open');
+  const vid=document.getElementById('exp-lb-video');
+  vid.pause();vid.src='';
   document.body.style.overflow='';
-  hideNavClose();
 }
+
+function closeExpPopup(){closeExpLb();}
+function renderExpGroup(){}
+function expNextGroup(){}
 
 // ══════════════════════════════════════════
 // TOOLS
@@ -1714,6 +1790,7 @@ function expDragStart(e,i){_expDragFrom=i;e.dataTransfer.effectAllowed='move';}
 function expDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';}
 async function expDrop(e,i){
   e.preventDefault();
+  document.querySelectorAll('.cms-exp-card.drag-over').forEach(el=>el.classList.remove('drag-over'));
   if(_expDragFrom===null||_expDragFrom===i)return;
   const moved=EXPERIMENTS.splice(_expDragFrom,1)[0];
   EXPERIMENTS.splice(i,0,moved);
@@ -1721,7 +1798,47 @@ async function expDrop(e,i){
   await save();renderExperiments();renderCMSLists();
 }
 
+// Flat-clip drag: dragging any clip card reorders the EXPERIMENT GROUP it belongs to
+let _flatDragFromEi=null;
+function cmsFlatDragStart(e,ei){
+  _flatDragFromEi=ei;
+  e.dataTransfer.effectAllowed='move';
+  // Highlight all cards of the same group as "dragging"
+  document.querySelectorAll('.cms-exp-card[data-ei="'+ei+'"]').forEach(el=>el.classList.add('drag-active'));
+}
+function cmsFlatDragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';}
+function cmsFlatDragEnter(e,ei){
+  if(_flatDragFromEi===null||_flatDragFromEi===ei)return;
+  document.querySelectorAll('.cms-exp-card[data-ei="'+ei+'"]').forEach(el=>el.classList.add('drag-over'));
+}
+function cmsFlatDragLeave(e,ei){
+  // Only clear if leaving to outside this group
+  var rel=e.relatedTarget;
+  if(rel&&rel.closest&&rel.closest('.cms-exp-card[data-ei="'+ei+'"]'))return;
+  document.querySelectorAll('.cms-exp-card[data-ei="'+ei+'"]').forEach(el=>el.classList.remove('drag-over'));
+}
+async function cmsFlatDrop(e,toEi){
+  e.preventDefault();
+  document.querySelectorAll('.cms-exp-card').forEach(el=>el.classList.remove('drag-over','drag-active'));
+  const fromEi=_flatDragFromEi; _flatDragFromEi=null;
+  if(fromEi===null||fromEi===toEi)return;
+  const moved=EXPERIMENTS.splice(fromEi,1)[0];
+  const adj=toEi>fromEi?toEi-1:toEi;
+  EXPERIMENTS.splice(adj,0,moved);
+  await save();renderExperiments();renderCMSLists();
+}
+function cmsFlatDragEnd(){
+  _flatDragFromEi=null;
+  document.querySelectorAll('.cms-exp-card').forEach(el=>el.classList.remove('drag-over','drag-active'));
+}
+
 async function delExperiment(i){EXPERIMENTS.splice(i,1);await save();renderExperiments();renderCMSLists();}
+// Remove a single clip from an experiment; removes the experiment if it becomes empty
+async function delExpClip(ei,ci){
+  EXPERIMENTS[ei].media.splice(ci,1);
+  if(EXPERIMENTS[ei].media.length===0) EXPERIMENTS.splice(ei,1);
+  await save();renderExperiments();renderCMSLists();
+}
 async function delReadingYear(yr){delete READINGS[yr];await save();renderReadings();renderCMSLists();}
 
 function renderCMSLists(){
@@ -1734,9 +1851,30 @@ function renderCMSLists(){
         <button onclick="delProject(${i})">Remove</button>
       </div>
     </div>`).join('');
-  document.getElementById('cms-exp-list').innerHTML=
-    `<div style="font-size:calc(var(--fs)*0.6);font-weight:700;margin-bottom:8px">Experiments (${EXPERIMENTS.length})</div>`+
-    EXPERIMENTS.map((e,i)=>`<div class="cms-entry" draggable="true" data-idx="${i}" ondragstart="expDragStart(event,${i})" ondragover="expDragOver(event)" ondrop="expDrop(event,${i})" style="cursor:grab"><span style="display:flex;align-items:center;gap:8px"><span style="font-size:0.9em;color:#aaa;cursor:grab">⠿</span><span>${String(i+1).padStart(3,'0')} — ${e.title}</span></span><div style="display:flex;gap:6px"><button onclick="editExperiment(${i})">Edit</button><button onclick="delExperiment(${i})">Remove</button></div></div>`).join('');
+  {
+    const flat=[];
+    EXPERIMENTS.forEach((e,ei)=>(e.media||[]).forEach((src,ci)=>flat.push({src,ei,ci})));
+    const total=flat.length;
+    document.getElementById('cms-exp-list').innerHTML=
+      `<div style="font-size:calc(var(--fs)*0.6);font-weight:700;margin-bottom:4px">${EXPERIMENTS.length} groups · ${total} clips — drag any clip to reorder its group</div>`+
+      `<div class="cms-exp-grid">`+
+      flat.map(({src,ei,ci})=>{
+        const thumb=cldPoster(src);
+        const isFirst=ci===0;
+        return `<div class="cms-exp-card${isFirst?' cms-exp-group-start':''}" data-ei="${ei}" draggable="true"
+          ondragstart="cmsFlatDragStart(event,${ei})"
+          ondragover="cmsFlatDragOver(event)"
+          ondragenter="cmsFlatDragEnter(event,${ei})"
+          ondragleave="cmsFlatDragLeave(event,${ei})"
+          ondrop="cmsFlatDrop(event,${ei})"
+          ondragend="cmsFlatDragEnd()">
+          <img class="cms-exp-thumb" src="${thumb}" loading="lazy" alt="">
+          <div class="cms-exp-label">${String(ei+1).padStart(3,'0')}${isFirst?' ↕':''} · clip ${ci+1}</div>
+          <button class="cms-exp-remove" onclick="event.stopPropagation();delExpClip(${ei},${ci})" title="Remove clip">×</button>
+        </div>`;
+      }).join('')+
+      `</div>`;
+  }
   document.getElementById('cms-read-list').innerHTML=
     `<div style="font-size:calc(var(--fs)*0.6);font-weight:700;margin-bottom:8px">Years (${Object.keys(READINGS).length})</div>`+
     Object.keys(READINGS).sort((a,b)=>b-a).map(yr=>`<div class="cms-entry"><span>${yr} — ${READINGS[yr].titles.length} books</span><div style="display:flex;gap:6px"><button onclick="editReadingYear('${yr}')">Edit</button><button onclick="delReadingYear('${yr}')">Remove</button></div></div>`).join('');
@@ -2282,9 +2420,21 @@ function initFooterEffects(){
 // KEYBOARD: ESC closes popups
 // ══════════════════════════════════════════
 document.addEventListener('keydown',e=>{
+  const lbOpen=document.getElementById('exp-lb').classList.contains('open');
+  if(lbOpen){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'){
+      e.preventDefault();
+      _expLbIdx=(_expLbIdx+1)%_expLbList.length;expLbShow();
+    } else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){
+      e.preventDefault();
+      _expLbIdx=(_expLbIdx-1+_expLbList.length)%_expLbList.length;expLbShow();
+    } else if(e.key==='Escape'){
+      closeExpLb();
+    }
+    return;
+  }
   if(e.key==='Escape'){
     if(document.getElementById('proj-popup').classList.contains('open'))closeProjPopup();
-    if(document.getElementById('exp-popup').classList.contains('open'))closeExpPopup();
     // Tool overlays
     document.querySelectorAll('.tool-overlay.open').forEach(el=>el.classList.remove('open'));
   }
@@ -2385,6 +2535,8 @@ function setBubbleColor(page,idx,val){
   }
   draw();
 })();
+
+
 
 // ── Bootstrap ──
 if(document.readyState==='loading'){
